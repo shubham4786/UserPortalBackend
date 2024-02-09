@@ -1,11 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const userImfoRoute = require("./routes/userImfo.js");
 const userRoute = require("./routes/user.js");
 
 const authMiddleware = require("./middleware/auth.js");
 const app = express();
+
+app.use(cors());
 
 const connectdb = async () => {
   await mongoose.connect(
