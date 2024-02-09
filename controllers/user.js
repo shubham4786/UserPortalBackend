@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
   });
 
   if (!user) {
-    return res.status(400).json({
+    return res.json({
       success: false,
       message: "User dose not exists, Please register first",
     });
@@ -62,7 +62,7 @@ const loginUser = async (req, res) => {
   const isPasswordValid = await bcrypt.compare(planTextPassword, user.password);
 
   if (!isPasswordValid) {
-    return res.status(400).json({
+    return res.json({
       success: false,
       message: "Incorrect usrename or password",
     });
@@ -72,6 +72,7 @@ const loginUser = async (req, res) => {
     exp: Math.floor(Date.now() / 1000 + 3600),
     email: user.email,
     id: user.id,
+    name: user.name,
   };
 
   const token = jwt.sign(payload, jwtSecretKey);
