@@ -23,7 +23,7 @@ const registarUser = async (req, res) => {
     email: req.body.email,
   });
   if (user) {
-    return res.status(409).json({
+    return res.json({
       success: false,
       message: "User already registered.",
     });
