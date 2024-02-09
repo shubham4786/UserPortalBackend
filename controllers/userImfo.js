@@ -7,7 +7,7 @@ const updateImfo = async (req, res) => {
     userId: req.body.userId,
   });
   if (imfo) {
-    return res.status(409).json({
+    return res.json({
       success: false,
       message: "User Details already Updated.",
     });
